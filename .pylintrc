@@ -1,0 +1,11 @@
+[MASTER]
+disable=
+
+[MESSAGES CONTROL]
+disable=
+
+[FORMAT]
+max-line-length=100
+
+[REPORTS]
+score=yes

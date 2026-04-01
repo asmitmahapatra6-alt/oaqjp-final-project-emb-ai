@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detector</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 16px;
+            line-height: 1.5;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+        }
+
+        .card {
+            border: 1px solid #d0d7de;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f6f8fa;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #8c959f;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border: 0;
+            border-radius: 8px;
+            background: #0969da;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #fff;
+            border: 1px dashed #8c959f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emotion Detector</h1>
+    <p>Enter text and analyze the predicted emotion.</p>
+
+    <div class="card">
+        <label for="textToAnalyze">Text to Analyze</label>
+        <textarea id="textToAnalyze" placeholder="Type your statement here..."></textarea>
+        <button type="button" onclick="runSentimentAnalysis()">Analyze Emotion</button>
+        <div id="result">Result will appear here.</div>
+    </div>
+
+    <script>
+        async function runSentimentAnalysis() {
+            const text = document.getElementById('textToAnalyze').value;
+            const resultElement = document.getElementById('result');
+
+            try {
+                const response = await fetch(`/emotionDetector?textToAnalyze=${encodeURIComponent(text)}`);
+                const data = await response.text();
+                resultElement.textContent = data;
+            } catch (error) {
+                resultElement.textContent = 'Error calling the Emotion Detector service.';
+            }
+        }
+    </script>
+</body>
+</html>
