@@ -1,4 +1,6 @@
-# Emotion Detector
+# Final Project - Emotion Detector
+
+This repository contains the Final Project submission for the Emotion Detector application.
 
 Emotion Detector is a Flask-based web application that uses the Watson NLP
 EmotionPredict endpoint to infer emotions from user-provided text.
